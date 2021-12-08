@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+main {
+  width: 90vw;
+  padding: 10px 30px;
+  background: white;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(6, 15vw);
+  grid-template-rows: repeat(6, 100px);
+  gap: 5px;
+  perspective: 1000px;
+}
+.card {
+  transform-style: preserve-3d;
+  width: 100%;
+  background: blue;
+  transition: transform 0.4s linear, background 0s 0.2s linear,
+    font-size 0s 0.2s linear;
+  font-size: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.card:hover {
+  filter: brightness(0.9);
+}
+.cardOnclick {
+  transform: rotateY(180deg);
+  background: red;
+  font-size: 26px;
+  transform: scale(-1, 1);
+}
+.sucess {
+  background: chartreuse;
+  font-size: 26px;
+}
