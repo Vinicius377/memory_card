@@ -39,6 +39,7 @@ main {
   transform: rotateY(180deg);
   background: red;
   font-size: 26px;
+
   transform: scale(-1, 1);
 }
 .sucess {
