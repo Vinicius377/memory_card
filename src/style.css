@@ -10,8 +10,11 @@ body {
   gap: 20px;
 }
 main {
+  margin-top: 20px;
+  overflow: hidden;
+  height: 0;
   width: 90vw;
-  padding: 10px 30px;
+  padding: 0 30px;
   background: white;
   display: grid;
   justify-content: center;
@@ -39,9 +42,50 @@ main {
   transform: rotateY(180deg);
   background: red;
   font-size: 26px;
+
   transform: scale(-1, 1);
 }
 .sucess {
   background: chartreuse;
   font-size: 26px;
+}
+header {
+  overflow: hidden;
+  border-radius: 5px;
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  margin-block: 10px;
+  padding: 7px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+}
+label span {
+  margin-left: 8px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: rgb(238, 238, 238);
+  cursor: pointer;
+}
+label input {
+  display: none;
+}
+label:hover {
+  filter: brightness(0.9);
+}
+input:checked + span {
+  background: rgb(0, 195, 255);
+}
+#starting {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background: rgb(0, 67, 155);
+  color: white;
+  cursor: pointer;
 }
