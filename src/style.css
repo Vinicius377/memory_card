@@ -10,13 +10,12 @@ body {
   gap: 20px;
 }
 main {
-  margin-top: 20px;
+  margin-block: 5px;
   overflow: hidden;
-  height: 0;
+  display: none;
   width: 90vw;
-  padding: 0 30px;
+  padding: 10px 30px;
   background: white;
-  display: grid;
   justify-content: center;
   grid-template-columns: repeat(6, 15vw);
   grid-template-rows: repeat(6, 100px);
@@ -24,6 +23,7 @@ main {
   perspective: 1000px;
 }
 .card {
+  border-radius: 5px;
   transform-style: preserve-3d;
   width: 100%;
   background: blue;
@@ -88,4 +88,7 @@ input:checked + span {
   background: rgb(0, 67, 155);
   color: white;
   cursor: pointer;
+}
+#starting:hover {
+  filter: brightness(1.2);
 }

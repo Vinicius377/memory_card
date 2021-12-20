@@ -1,3 +1,5 @@
+const starting = document.querySelector("#starting");
+const header = document.querySelector("header");
 const main = document.querySelector("main");
 let names = [
   "😃 ",
@@ -28,13 +30,10 @@ const dificulty = {
   dificil: 18,
 };
 
-const resetCard = (element) => {
-  countOnclick = 0;
-  element.classList.remove("cardOnclick");
+const showContainerGame = (show = false) => {
+  header.style.display = show ? "none" : "flex";
+  main.style.display = show ? "grid" : "none";
 };
-
-const starting = document.querySelector("#starting");
-const header = document.querySelector("header");
 
 starting.addEventListener("click", () => {
   let dificultyChosen;
@@ -46,9 +45,32 @@ starting.addEventListener("click", () => {
     }
   });
   createElements(dificultyChosen);
-  header.style.display = "none";
-  main.style.height = "auto";
+  showContainerGame(true);
 });
+// *criando cards
+const createElements = (quantityElements) => {
+  main.innerHTML = "";
+  for (let i = 0; i < quantityElements * 2; i++) {
+    let index = i < quantityElements ? i : i - quantityElements;
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = names[index];
+    card.style.order = Math.floor(Math.random() * i);
+
+    card.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("sucess") && !isRunning) {
+        isRunning = true;
+        handleCard(e, quantityElements);
+      }
+    });
+
+    main.appendChild(card);
+  }
+};
+const resetCard = (element) => {
+  countOnclick = 0;
+  element.classList.remove("cardOnclick");
+};
 
 const validateValues = (event) => {
   //*Fluxo de validação dos valores
@@ -91,28 +113,6 @@ const handleCard = (event, count) => {
 
   if (countSuccess + 1 == count && countOnclick == 2) {
     alert("parabens");
-    main.style.height = "0";
-    header.style.display = "flex";
-  }
-};
-
-// *criando cards
-const createElements = (quantityElements) => {
-  main.innerHTML = "";
-  for (let i = 0; i < quantityElements * 2; i++) {
-    let index = i < quantityElements ? i : i - quantityElements;
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = names[index];
-    card.style.order = Math.floor(Math.random() * i);
-
-    card.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("sucess") && !isRunning) {
-        isRunning = true;
-        handleCard(e, quantityElements);
-      }
-    });
-
-    main.appendChild(card);
+    showContainerGame(false);
   }
 };
